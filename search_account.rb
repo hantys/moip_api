@@ -3,6 +3,7 @@ require 'yaml'
 require 'rest_client'
 require "base64"
 require 'nokogiri'
+  require 'pry'
 
 module Moip
   module Request
@@ -14,9 +15,9 @@ module Moip
     private
 
     def self.load_config
-      @config = YAML.load('config/moip.yml')
-      @api_key = @config["api_key"]
-      @api_secret = @config["api_secret"]
+      @config = YAML.load_file('config/moip.yml')
+      @api_key = @config["production"]["api_token"]
+      @api_secret = @config["production"]["api_secret"]
       @token = Base64.strict_encode64("#{@api_key}:#{@api_secret}")
     end
 
@@ -32,8 +33,8 @@ end
 
 @email = "renatosousafilho@gmail.com"
 
-response = Moip::Request.build_request(:get, "https://desenvolvedor.moip.com.br/sandbox/ws/alpha", "/VerificarConta/#{@email}")
+@response = Moip::Request.build_request(:get, "https://desenvolvedor.moip.com.br/sandbox/ws/alpha", "/VerificarConta/#{@email}")
 
-# @doc = Nokogiri::XML(response)
+@doc = Nokogiri::XML(@response)
 
 p @doc
