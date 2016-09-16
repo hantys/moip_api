@@ -1,8 +1,7 @@
 #!/bin/ruby
+require 'yaml'
 require 'rest_client'
-
-
-@token = "WUpORzJKSjdFRjlEMDRET01UR0U4VDZaQzJUQ1pBQ0Q6TDRCSDY3T0VPUFg4TDhLS0g5SFRUU1dNQ0ZaSDVIMkJZUzE4Rk9VSw=="
+require "base64"
 
 module Moip
   module Request
@@ -13,7 +12,15 @@ module Moip
 
     private
 
+    def self.load_config
+      @config = YAML.load('config/moip.yml')
+      @api_key = @config["api_key"]
+      @api_secret = @config["api_secret"]
+      @token = Base64.strict_encode64("#{@api_key}:#{@api_secret}")
+    end
+
     def self.default_headers
+      self.load_config
       {
   "     Content-Type": "application/xml",
   "     Authorization": "Basic #{@token} "
