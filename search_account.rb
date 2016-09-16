@@ -2,6 +2,7 @@
 require 'yaml'
 require 'rest_client'
 require "base64"
+require 'nokogiri'
 
 module Moip
   module Request
@@ -33,4 +34,6 @@ end
 
 response = Moip::Request.build_request(:get, "https://desenvolvedor.moip.com.br/sandbox/ws/alpha", "/VerificarConta/#{@email}")
 
-p response
+# @doc = Nokogiri::XML(response)
+
+p @doc
