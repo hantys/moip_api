@@ -1,9 +1,0 @@
-<ns1:verificarContaResponse xmlns:ns1="http://www.moip.com.br/ws/alpha/">
-	<RespostaVerificarConta>
-		<Status>Criado</Status>
-		<Tipo>
-			<Codigo>2</Codigo>
-			<Descricao>Negocios</Descricao>
-		</Tipo>
-		</RespostaVerificarConta>
-</ns1:verificarContaResponse>
