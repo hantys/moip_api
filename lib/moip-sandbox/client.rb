@@ -13,7 +13,7 @@ module Moip
 
 		def opts
 			opts = @opts
-			opts[:headers] || = {}
+			opts[:headers] ||= {}
 
 			opts[:headers].merge!(
 				{
