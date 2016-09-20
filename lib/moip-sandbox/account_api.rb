@@ -1,21 +1,28 @@
 module Moip
-	class AccountAPI
-		attr_reader :client
+	module V1
+		class AccountAPI
+			attr_reader :client
 
-		def initialize(client)
-			@client = client
+			def initialize(client)
+				@client = client
+			end
+
+			def base_path
+				"/ws/alpha/VerificarConta/"
+			end
+
+			def find(email)
+				@response = client.get("#{base_path}/#{email}")
+				@response
+			end
 		end
+	end
 
-		def base_path
-			"/ws/alpha/VerificarConta/"
-		end
-
-		def find(email)
-			@response = client.get("#{base_path}/#{email}")
-			@response
-			# @doc = Nokogiri::XML.parse(@response.to_s)
-			# @account = Moip::Parser::AccountParser.parse(@doc)
-			# @account
+	module V2
+		class AccountAPI
+			def base_path
+				#
+			end
 		end
 	end
 end
