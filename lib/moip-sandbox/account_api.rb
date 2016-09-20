@@ -12,9 +12,10 @@ module Moip
 
 		def find(email)
 			@response = client.get("#{base_path}/#{email}")
-			@doc = Nokogiri::XML.parse(@response.to_s)
-			@account = Moip::Parser::AccountParser.parse(@doc)
-			@account
+			@response
+			# @doc = Nokogiri::XML.parse(@response.to_s)
+			# @account = Moip::Parser::AccountParser.parse(@doc)
+			# @account
 		end
 	end
 end
