@@ -50,7 +50,7 @@ module Moip
 
 		private
 		def get_base_uri
-			return ÉNV["base_uri"] if ENV["base_uri"]
+			return ENV["base_uri"] if ENV["base_uri"]
 
 			if @version == :v2
 				if production?
