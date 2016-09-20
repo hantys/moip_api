@@ -36,7 +36,8 @@ module Moip
 		def get(path)
 			resp = self.class.get path, opts()
 
-			create_response resp
+			resp.parsed_response
+			# create_response resp
 		end
 
 		private 
