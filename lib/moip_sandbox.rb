@@ -5,6 +5,7 @@ require "base64"
 require 'nokogiri'
 
 require 'moip-sandbox/request'
+require 'moip-sandbox/client'
 require 'moip-sandbox/account_api'
 require 'moip-sandbox/parser/account_parser'
 require 'moip-sandbox/resource/account'
