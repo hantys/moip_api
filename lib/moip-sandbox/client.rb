@@ -11,6 +11,14 @@ module Moip
 			self.class.base_uri @uri
 		end
 
+		def sandbox?
+			env == :sandbox
+		end
+
+		def production?
+			env == :production
+		end
+
 		def opts
 			opts = @opts
 			opts[:headers] ||= {}
