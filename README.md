@@ -5,9 +5,14 @@ gem build ./moip_sandbox.gemspec
 gem install ./moip-sandbox-X.X.X.gem
 
 
-### Instanciando a autenticação
+### Instanciando a autenticação Basic
 ```
 @auth = Moip::Auth::Basic.new("<TOKEN>", "<SECRET>")
+```
+
+### Instanciando a autenticação Oauth
+```
+@auth = Moip::Auth::Oauth.new("<SECRET>")
 ```
 
 ### Instanciando o client
@@ -15,12 +20,20 @@ gem install ./moip-sandbox-X.X.X.gem
 @client = Moip::Client.new(:sandbox/:production, @auth, :v1/:v2)
 ```
 
-### Instanciando a API de Contas
+### Instanciando a API de Contas Moip
 ```
-@api = Moip::AccountAPI.new(@client)
+@api = Moip::V2::AccountAPI.new(@client)
+```
+
+### Instanciando objeto para criação de uma nova conta moip para vendedor
+```
+@user = Moip::Resource::User.new(email, name, cpf, birthdate, ddd, phone, street, number, district, cep, city, state)
+
+@obj = @api.create_account(@user)
 ```
 
 ### Verificando se uma conta já existe
 ```
-@obj = @api.find("renatosousafilho@gmail.com")
+@api_v1 = Moip::V1::AccountAPI.new(@client)
+@obj = @api_v1.find("renatosousafilho@gmail.com")
 ```

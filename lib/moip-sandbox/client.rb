@@ -1,6 +1,6 @@
 module Moip
 	class Client
-		include HTTParty	
+		include HTTParty
 
 		attr_reader :env, :auth, :uri
 
@@ -25,8 +25,8 @@ module Moip
 
 			opts[:headers].merge!(
 				{
-					"Content-Type": "application/xml",
-					"Authorization": auth.header	
+					"Content-Type": "application/json",
+					"Authorization": auth.header
 				}
 			)
 
@@ -40,12 +40,23 @@ module Moip
 			# create_response resp
 		end
 
-		private 
+		def post(path, params)
+
+			resp = self.class.post path, headers: opts()[:headers], body: params.to_json
+
+			resp
+			# create_response resp
+		end
+
+		private
 		def get_base_uri
 			return ÉNV["base_uri"] if ENV["base_uri"]
 
 			if @version == :v2
-				
+				if production?
+				else
+					"https://sandbox.moip.com.br/v2"
+				end
 			elsif @version == :v1
 				if production?
 				else
@@ -59,7 +70,7 @@ module Moip
 		end
 
 		def basic_auth
-			{username: @auth[:token], password: @auth[:secret]}			
+			{username: @auth[:token], password: @auth[:secret]}
 		end
 	end
 end
