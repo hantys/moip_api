@@ -4,8 +4,8 @@ module Moip
 
 		attr_reader :env, :auth, :uri
 
-		def initialize(env = :sandbox, auth = nil, opts = {})
-			@env, @auth, @opts = env.to_sym, auth, opts
+		def initialize(env = :sandbox, auth = nil, version = :v2, opts = {})
+	        @env, @auth, @version, @opts = env.to_sym, auth, version, opts
 
 			@uri = get_base_uri
 			self.class.base_uri @uri
@@ -44,9 +44,13 @@ module Moip
 		def get_base_uri
 			return ÉNV["base_uri"] if ENV["base_uri"]
 
-			if production?
-			else
-				"https://desenvolvedor.moip.com.br/sandbox"
+			if @version == :v2
+				
+			elsif @version == :v1
+				if production?
+				else
+					"https://desenvolvedor.moip.com.br/sandbox"
+				end
 			end
 		end
 
