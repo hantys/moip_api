@@ -9,7 +9,7 @@ module Moip
 			end
 
 			def header
-				%(Basic #{Base64.strinct_encode("#{@token}:#{@secret}")})
+				%(Basic #{Base64.strict_encode64("#{@token}:#{@secret}")})
 			end
 		end
 	end
