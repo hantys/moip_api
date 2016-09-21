@@ -33,7 +33,7 @@ module Moip
 
       def create_account(user)
         # @user = Moip::Resource::User.new(user) if user
-        @response = client.post(base_path, user.get_json)
+        @response = client.post(base_path, user.to_json)
         return set_obj_response user, @response
       end
 
