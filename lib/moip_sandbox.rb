@@ -2,6 +2,7 @@
 require 'yaml'
 require 'httparty'
 require "base64"
+require 'active_data'
 
 require 'moip-sandbox/client'
 require 'moip-sandbox/account_api'
