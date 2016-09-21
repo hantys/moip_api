@@ -37,6 +37,11 @@ module Moip
         return set_obj_response user, @response
       end
 
+      def find(moip_id)
+        @response = client.get("#{base_path}/#{id}")
+        Response.new @response, @response.parsed_response
+      end
+
       private
 
         def set_obj_response(user, params)
