@@ -3,7 +3,7 @@ require 'moip_sandbox'
 email = "souripto4r@hotmail.com"
 cpf = '743.845.930-66'
 
-@auth = Moip::Auth::Oauth.new("96236c8ce7944d80a98cf64ea7f3f2e5_v2")
+@auth = Moip::Auth::OAuth.new("96236c8ce7944d80a98cf64ea7f3f2e5_v2")
 @client = Moip::Client.new(:sandbox, @auth)
 @api = Moip::V2::AccountAPI.new(@client)
 
