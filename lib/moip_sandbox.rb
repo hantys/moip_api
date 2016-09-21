@@ -9,6 +9,7 @@ require 'moip-sandbox/auth/basic'
 require 'moip-sandbox/parser/account_parser'
 require 'moip-sandbox/resource/account'
 require 'moip-sandbox/resource/user'
+require 'moip-sandbox/resource/error'
 
 module Moip
 	class << self

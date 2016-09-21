@@ -4,6 +4,8 @@ module Moip
     class User < SimpleDelegator
       attr_reader :email, :name, :cpf, :birthdate, :ddd, :phone, :street, :number, :district, :cep, :city, :state
 
+      attr_accessor :id, :login, :accessToken, :channelId, :type, :transparent_account, :created_at, :link, :set_password
+
       def initialize(email, name, cpf, birthdate, ddd, phone, street, number, district, cep, city, state)
         @email, @name, @cpf, @birthdate, @ddd, @phone, @street, @number, @district, @cep, @city, @state = email, name, cpf, birthdate, ddd, phone, street, number, district, cep, city, state
       end
