@@ -1,8 +1,8 @@
 Gem::Specification.new do |spec|
 	spec.name          = "moip-sandbox"
 	spec.version       = "0.0.1"
-	spec.authors       = ["Renato Filho"]
-	spec.email         = ["renatosousafilho@gmail.com"]
+	spec.authors       = ["Renato Filho", "Pedro Fausto"]
+	spec.email         = ["renatosousafilho@gmail.com", "pedro.fausto@hotmail.com"]
 	spec.summary       = %q{Cliente ruby para api v1 moip}
 	spec.description   = %q{Cliente ruby para api v1 moip}
 	spec.homepage      = ""
