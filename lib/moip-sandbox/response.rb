@@ -1,4 +1,4 @@
-module Moip2
+module Moip
 
   class Response < SimpleDelegator
 

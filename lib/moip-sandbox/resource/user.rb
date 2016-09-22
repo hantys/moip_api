@@ -18,7 +18,7 @@ module Moip
       attribute :state, String
       attribute :id, String
       attribute :login, String
-      attribute :acess_token, String
+      attribute :access_token, String
       attribute :channel_id, String
       attribute :type, String
       attribute :transparent_account, String

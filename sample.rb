@@ -1,7 +1,7 @@
 require 'moip_sandbox'
 
-email = "souripto4r@hotmail.com"
-cpf = '743.845.930-66'
+email = "souriptor@hotmail.com"
+cpf = '282.335.551-00'
 
 @auth = Moip::Auth::OAuth.new("96236c8ce7944d80a98cf64ea7f3f2e5_v2")
 @client = Moip::Client.new(:sandbox, @auth)
@@ -11,14 +11,14 @@ cpf = '743.845.930-66'
 	email: email,
 	name: "Pedro Fausto",
 	cpf: cpf,
-	birthdate: "28/12/1982", 
-	ddd: '86', 
-	phone: '99421-1487', 
-	street: 'rua epitacio pessoa', 
-	number: '1240', 
-	district: 'lourival', 
-	cep: '64023-400', 
-	city: 'teresina', 
+	birthdate: "28/12/1982",
+	ddd: '86',
+	phone: '99421-1487',
+	street: 'rua epitacio pessoa',
+	number: '1240',
+	district: 'lourival',
+	cep: '64023-400',
+	city: 'teresina',
 	state: 'PI'
 }
 @user = Moip::Resource::User.new(@user_params)
