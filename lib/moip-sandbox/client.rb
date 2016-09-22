@@ -49,7 +49,7 @@ module Moip
 			if headers == nil
 				resp = self.class.post path, headers: opts()[:headers], body: params.to_json
 			else
-				resp = self.class.post path, headers: headers, body: params.to_json
+				resp = self.class.post path, headers: headers, body: params
 			end
 
 			resp
