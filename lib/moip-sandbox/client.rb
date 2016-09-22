@@ -4,7 +4,7 @@ module Moip
 
 		attr_reader :env, :auth, :uri
 
-		def initialize(env = :sandbox, auth = nil, version = :v2, opts = {})
+		def initialize(env = :sandbox, auth = nil, host=nil, version = :v2, opts = {})
 	        @env, @auth, @version, @opts = env.to_sym, auth, version, opts
 
 			@uri = get_base_uri
@@ -55,7 +55,7 @@ module Moip
 			if @version == :v2
 				if production?
 				else
-					"https://sandbox.moip.com.br/v2"
+					(host== :connect) ? "https://connect.sandbox.moip.com.br" : "https://sandbox.moip.com.br/v2"
 				end
 			elsif @version == :v1
 				if production?
