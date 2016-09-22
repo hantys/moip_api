@@ -30,13 +30,6 @@ module	Moip
 				"#{@host}?#{@params}"
 			end
 
-			## Inserir no controller para gerar o token
-			## /auth/moip
-			# def moip
-			#	@code = params[:code]
-			#	AuthTokenAPI.generate_token(code)
-			# end
-
 			def generate_token(code)
 				# TODO: Read from .yaml file
 				params = URI.encode_www_form([

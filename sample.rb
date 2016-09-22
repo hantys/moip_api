@@ -31,6 +31,6 @@ require 'moip_sandbox'
 @client_basic = Moip::Client.new(:sandbox, @auth_basic)
 @api_permission = Moip::V2::AuthTokenAPI.new(@client_basic)
 @api_permission.get_permission_uri()
-@get_user = @api_permission.generate_token('b8ebc9e382223a0f733d535a81064f45d8a21620')
+@get_user = @api_permission.generate_token('70ce91b0e3f23fee5aa65701b3016e1ea69315c3')
 
 

@@ -12,51 +12,34 @@ gem build ./moip_sandbox.gemspec
 gem install ./moip-sandbox-X.X.X.gem
 
 
-### Instanciando a autenticação Basic
+### Instanciando api
 ```
-@auth = Moip::Auth::Basic.new("<TOKEN>", "<SECRET>")
+@api = Moip::Api.new()
+
+ * Metodos da api:
+  - @api.account (utilizado para criacao e busca de contas moip)
+  - @api.connect (utilizado para permissoes de terceiros)
 ```
 
-### Instanciando a autenticação Oauth
-```
-@auth = Moip::Auth::Oauth.new("<SECRET>")
-```
 
-### Instanciando o client
-```
-@client = Moip::Client.new(:sandbox/:production, @auth, :v1/:v2)
-```
-
-### Instanciando a API de Contas Moip
-```
-@api_account = Moip::V2::AccountAPI.new(@client)
-```
-
-### Instanciando objeto para criação de uma nova conta moip para vendedor
+### criando o usuario moip
 ```
 @user_params = {
-  email: email,
+  email: 'teste@teste.com',
   name: "Pedro Fausto",
   cpf: '000.000.000-00',
   birthdate: "28/12/1982",
-  ddd: '86',
+  ddd: '99',
   phone: '99999-9999',
-  street: 'rua epitacio pessoa',
+  street: 'rua jose pessoa',
   number: '5555',
-  district: 'lourival',
+  district: 'bairro',
   cep: '64000-000',
   city: 'teresina',
   state: 'PI'
 }
-@user = Moip::Resource::User.new(@user_params)
-retorno do objeto:
-#<Moip::Resource::User email: "souriptor@hotmail.com", name: "Pedro Fausto", cpf: "282.335.551-00", birthdate: "28/12/1982", ddd: "86", phone: "99421-1487", street: "rua epitacio pessoa", number: "1240", district: "lourival", cep: "64023-400", city: "teresina", state: "PI", id: nil, login: nil, access_token: nil, channel_id: nil, type: nil, transparent_account: nil, created_at: nil, link: nil, set_password: nil>
 
-```
-
-### criando o usuario
-```
-@obj = @api_account.create_account(@user)
+@user = @api.account.create(@user_params)
 
 Se cpf já existir, retorno:
 => #<RecursiveOpenStruct errors=[{:code=>"REG-002", :path=>"v2/accounts", :description=>"Tax document has already been taken!"}], additionalInfo={:account=>{:id=>"MPA-CBC872FEC5AD", :email=>"souript2or@hotmail.com", :login=>"souript2or@hotmail.com"}}>
@@ -65,27 +48,41 @@ Se email já existir, retorno:
 => #<RecursiveOpenStruct errors=[{:code=>"REG-001", :path=>"v2/accounts", :description=>"Email has already been taken!"}], additionalInfo={:account=>{:id=>"MPA-909AD3837493", :email=>"souriptor@hotmail.com", :login=>"souriptor@hotmail.com"}}>
 
 Se usuário criado com sucesso, retorno:
-=> #<RecursiveOpenStruct id="MPA-58091C09070A", login="souriptor_teste@hotmail.com", accessToken="70dfcdbd61f64b25bb87330401aaeac7_v2", channelId="APP-IYDQO7981OKQ", type="MERCHANT", transparentAccount=false, email={:address=>"souriptor_teste@hotmail.com", :confirmed=>false}, person={:name=>"Pedro", :lastName=>"Fausto", :birthDate=>"1982-12-28", :taxDocument=>{:type=>"CPF", :number=>"190.597.863-43"}, :address=>{:street=>"rua epitacio pessoa", :streetNumber=>"1240", :district=>"lourival", :zipcode=>"64023400", :zipCode=>"64023400", :city=>"teresina", :state=>"PI", :country=>"BRA"}, :phone=>{:countryCode=>"55", :areaCode=>"86", :number=>"994211487"}}, createdAt="2016-09-22T12:39:10.246Z", _links={:self=>{:href=>"https://sandbox.moip.com.br/moipaccounts/MPA-58091C09070A", :title=>nil}, :setPassword=>{:href=>"https://desenvolvedor.moip.com.br/sandbox/AskForNewPassword.do?method=confirm&email=souriptor_teste%40hotmail.com&code=5763385f53e294909bde40dbcacf500b"}}>
+=> #<RecursiveOpenStruct id="MPA-58091C09070A", login="souriptor_teste@hotmail.com", accessToken="70dfcdbd61f64b25bb87330401aaeac7_v2", channelId="APP-IYDQO7981OKQ", type="MERCHANT", transparentAccount=false, email={:address=>"souriptor_teste@hotmail.com", :confirmed=>false}, person={:name=>"Pedro", :lastName=>"Fausto", :birthDate=>"1982-12-28", :taxDocument=>{:type=>"CPF", :number=>"190.597.993-43"}, :address=>{:street=>"rua jose pessoa", :streetNumber=>"4444", :district=>"bairro", :zipcode=>"48352400", :zipCode=>"48352400", :city=>"teresina", :state=>"PI", :country=>"BRA"}, :phone=>{:countryCode=>"55", :areaCode=>"99", :number=>"999999999"}}, createdAt="2016-09-22T12:39:10.246Z", _links={:self=>{:href=>"https://sandbox.moip.com.br/moipaccounts/MPA-58091C09070A", :title=>nil}, :setPassword=>{:href=>"https://desenvolvedor.moip.com.br/sandbox/AskForNewPassword.do?method=confirm&email=souriptor_teste%40hotmail.com&code=5763385f53e294909bde40dbcacf500b"}}>
 ```
 
 ### Busca um usuário Moip pelo MOIP_ID
 ```
 # Verifica apenas se o login existe na base de dados
-exemplo 1:
-@moip_user = @api_account.find(@obj.id)
-exemplo 2:
-@moip_user = @api_account.find("MPA-58091C09070A")
+
+@moip_user = @api.account.find("MPA-58091C09070A")
 
 retorno:
-=> #<RecursiveOpenStruct id="MPA-58091C09070A", person={:lastName=>"Fausto", :phone=>{:areaCode=>"86", :countryCode=>"55", :number=>"994211487"}, :address=>{:zipcode=>"64023-400", :zipCode=>"64023-400", :street=>"rua epitacio pessoa", :state=>"PI", :streetNumber=>"1240", :district=>"lourival", :country=>"BRA", :city=>"teresina"}, :taxDocument=>{:number=>"190.597.863-43", :type=>"CPF"}, :name=>"Pedro", :birthDate=>"1982-12-28"}, transparentAccount=false, email={:confirmed=>true, :address=>"souriptor_teste@hotmail.com"}, createdAt="2016-09-22T09:39:10.000-03:00", _links={:self=>{:href=>"https://sandbox.moip.com.br/accounts/MPA-58091C09070A"}}, softDescriptor="souriptortes", login="souriptor_teste@hotmail.com", type="MERCHANT">
+=> #<RecursiveOpenStruct id="MPA-58091C09070A", person={:lastName=>"Fausto", :phone=>{:areaCode=>"99", :countryCode=>"55", :number=>"999999999"}, :address=>{:zipcode=>"48352-400", :zipCode=>"48352-400", :street=>"rua jose pessoa", :state=>"PI", :streetNumber=>"4444", :district=>"bairro", :country=>"BRA", :city=>"teresina"}, :taxDocument=>{:number=>"190.597.993-43", :type=>"CPF"}, :name=>"Pedro", :birthDate=>"1982-12-28"}, transparentAccount=false, email={:confirmed=>true, :address=>"souriptor_teste@hotmail.com"}, createdAt="2016-09-22T09:39:10.000-03:00", _links={:self=>{:href=>"https://sandbox.moip.com.br/accounts/MPA-58091C09070A"}}, softDescriptor="souriptortes", login="souriptor_teste@hotmail.com", type="MERCHANT">
 ```
 
-### Verificando se uma conta já existe
+### Permissão de terceiros
 ```
+#Se o usuário já possuir uma conta moip:
 
-#busca na v1 do moip
-@api_v1 = Moip::V1::AccountAPI.new(@client)
+- gerando o link para permissão
+  @link = @api.connect.get_permission_uri()
 
-# Verifica apenas se o login existe na base de dados
-@obj = @api_v1.find("renatosousafilho@gmail.com")
+  retorno:
+  "https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-M11STAPPOAUt&redirect_uri=https://url.com.br/callback.php&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO"
+
+- na aplicação você deve configurar uma url de retorno e criar um metodo para receber o code
+
+  * config/routes.rb
+    get '/auth/moip' => 'users#moip'
+
+  * app/controllers/users_controller.rb
+
+    def moip
+      @api.connect.generate_token(params['code'])
+    end
+
+- retorno do metodo generate_token('code'):
+=> #<RecursiveOpenStruct accessToken="4da6cec3a3ed4b24455e94cb43f57cba_v2", access_token="4da6cec3a3ed4b24455e94cb43f57cba_v2", expires_in="2026-09-22", refreshToken="64347001b4ec432ca948e5ed32d23b03_v2", refresh_token="64347001b4ec432ca948e5ed32d23b03_v2", scope="RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO", moipAccount={"id"=>"MPA-10EB343E384B3"}>
+
 ```
