@@ -13,10 +13,10 @@ module	Moip
 
 			def get_permission_uri
 				# TODO: Read values form yaml file
-				@app_id = ""
-				@redirect_uri = ""
+				@app_id = "APP-IYDQO7981OKQ"
+				@redirect_uri = "http://teste.ruaalecrim.com.br/auth/moip"
 				@host = "https://connect-sandbox.moip.com.br/oauth/authorize"
-				@params = "response_type=code&client_id=#{@app_id}&redirect_uri=#{@callback_url}&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO"
+				@params = "response_type=code&client_id=#{@app_id}&redirect_uri=#{@redirect_uri}&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO"
 				"#{@host}?#{@params}"
 			end
 
@@ -31,13 +31,21 @@ module	Moip
 				# TODO: Read from .yaml file
 				params = {
 					code: code,
-					client_id: "",
-					client_secret: "",
-					redirect_uri: "",
+					client_id: "APP-IYDQO7981OKQ",
+					client_secret: "071f4f6be2ca47e0bdc4f7d9242273f2",
+					redirect_uri: "http://teste.ruaalecrim.com.br/auth/moip",
 					grant_type: "authotization_code"
 				}
-				@response = client.post("#{base_path}/token", params)
-				Resource::User.new @response
+				auth = Auth::Basic.new 'YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD', 'L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK'
+
+				header = {
+					"Content-Type": "application/x-www-form-urlencoded",
+					"Authorization": auth.header
+				}
+				'https://connect-sandbox.moip.com.br'
+				@response = client.post("#{base_path}/token", params, header)
+				@response
+				# return Response.new @response, @response.parsed_response
 			end
 		end
 	end

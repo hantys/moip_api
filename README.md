@@ -71,7 +71,13 @@ Se usuário criado com sucesso, retorno:
 ### Busca um usuário Moip pelo MOIP_ID
 ```
 # Verifica apenas se o login existe na base de dados
+exemplo 1:
 @moip_user = @api_account.find(@obj.id)
+exemplo 2:
+@moip_user = @api_account.find("MPA-58091C09070A")
+
+retorno:
+=> #<RecursiveOpenStruct id="MPA-58091C09070A", person={:lastName=>"Fausto", :phone=>{:areaCode=>"86", :countryCode=>"55", :number=>"994211487"}, :address=>{:zipcode=>"64023-400", :zipCode=>"64023-400", :street=>"rua epitacio pessoa", :state=>"PI", :streetNumber=>"1240", :district=>"lourival", :country=>"BRA", :city=>"teresina"}, :taxDocument=>{:number=>"190.597.863-43", :type=>"CPF"}, :name=>"Pedro", :birthDate=>"1982-12-28"}, transparentAccount=false, email={:confirmed=>true, :address=>"souriptor_teste@hotmail.com"}, createdAt="2016-09-22T09:39:10.000-03:00", _links={:self=>{:href=>"https://sandbox.moip.com.br/accounts/MPA-58091C09070A"}}, softDescriptor="souriptortes", login="souriptor_teste@hotmail.com", type="MERCHANT">
 ```
 
 ### Verificando se uma conta já existe
