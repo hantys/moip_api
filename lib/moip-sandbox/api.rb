@@ -3,7 +3,7 @@ module Moip
 		attr_reader :factory
 
 		def initialize
-			factory = ClientFactory
+			@factory = ClientFactory.new
 		end
 
 		def connect
@@ -11,7 +11,7 @@ module Moip
 		end
 
 		def account
-			Moip::V1::AccountToken.new(factory.default_basic)
+			Moip::V2::AccountAPI.new(factory.default_oauth)
 		end
 	end
 end

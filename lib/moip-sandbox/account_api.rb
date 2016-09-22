@@ -21,26 +21,26 @@ module Moip
 
 	module V2
 		class AccountAPI
-      attr_reader :client
+	      attr_reader :client
 
-      def initialize(client)
-        @client = client
-      end
+	      def initialize(client)
+	        @client = client
+	      end
 
-      def base_path
-        '/accounts'
-      end
+	      def base_path
+	        '/accounts'
+	      end
 
-      def create_account(user)
-        # @user = Moip::Resource::User.new(user) if user
-        @response = client.post(base_path, user.to_json)
-        return Response.new @response, @response.parsed_response
-      end
+	      def create_account(user)
+	        # @user = Moip::Resource::User.new(user) if user
+	        @response = client.post(base_path, user.to_json)
+	        return Response.new @response, @response.parsed_response
+	      end
 
-      def find(moip_id)
-        @response = client.get("#{base_path}/#{moip_id}")
-        Response.new @response, @response
-      end
+	      def find(moip_id)
+	        @response = client.get("#{base_path}/#{moip_id}")
+	        Response.new @response, @response
+	      end
 		end
 	end
 end
