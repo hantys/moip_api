@@ -31,9 +31,9 @@ module Moip
 	        '/accounts'
 	      end
 
-	      def create_account(user)
-	        # @user = Moip::Resource::User.new(user) if user
-	        @response = client.post(base_path, user.to_json)
+	      def create(user)
+	        @user = Moip::Resource::User.new(user)
+	        @response = client.post(base_path, @user.to_json)
 	        return Response.new @response, @response.parsed_response
 	      end
 
