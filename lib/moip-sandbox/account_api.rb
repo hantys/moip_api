@@ -37,6 +37,10 @@ module Moip
         return Response.new @response, @response.parsed_response
       end
 
+      def find(moip_id)
+        @response = client.get("#{base_path}/#{moip_id}")
+        Response.new @response, @response
+      end
 		end
 	end
 end

@@ -1,7 +1,7 @@
 require 'moip_sandbox'
 
-email = "souriptor@hotmail.com"
-cpf = '282.335.551-00'
+email = "souriptor_teste@hotmail.com"
+cpf = '190.597.863-43'
 
 @auth = Moip::Auth::OAuth.new("96236c8ce7944d80a98cf64ea7f3f2e5_v2")
 @client = Moip::Client.new(:sandbox, @auth)
@@ -25,3 +25,7 @@ cpf = '282.335.551-00'
 @obj = @api.create_account(@user)
 
 puts @obj
+
+
+@api = Moip::V2::AuthTokenAPI.new(@client)
+AuthTokenAPI

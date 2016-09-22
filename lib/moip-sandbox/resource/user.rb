@@ -26,7 +26,7 @@ module Moip
       attribute :link, String
       attribute :set_password, String
 
-      validates :email, :name, :cpf, presence: true
+      # validates :email, :name, :cpf, presence: true
 
       def to_json
         data = {
