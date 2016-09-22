@@ -33,16 +33,24 @@ module Moip
 			opts
 		end
 
-		def get(path)
-			resp = self.class.get path, opts()
+		def get(path, headers = nil)
+			if headers == nil
+				resp = self.class.get path, opts()
+			else
+				resp = self.class.get path, headers: headers
+			end
 
 			resp.parsed_response
 			# create_response resp
 		end
 
-		def post(path, params)
+		def post(path, params, headers = nil)
 
-			resp = self.class.post path, headers: opts()[:headers], body: params.to_json
+			if headers == nil
+				resp = self.class.post path, headers: opts()[:headers], body: params.to_json
+			else
+				resp = self.class.post path, headers: headers, body: params.to_json
+			end
 
 			resp
 			# create_response resp
