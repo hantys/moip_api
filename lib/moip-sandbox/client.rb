@@ -63,7 +63,7 @@ module Moip
 			if @version == :v2
 				if production?
 				else
-					(host== :connect) ? "https://connect.sandbox.moip.com.br" : "https://sandbox.moip.com.br/v2"
+					(host== :connect) ? "https://connect-sandbox.moip.com.br" : "https://sandbox.moip.com.br/v2"
 				end
 			elsif @version == :v1
 				if production?

@@ -42,7 +42,7 @@ module	Moip
 					client_id: "APP-IYDQO7981OKQ",
 					client_secret: "071f4f6be2ca47e0bdc4f7d9242273f2",
 					redirect_uri: "http://teste.ruaalecrim.com.br/auth/moip",
-					grant_type: "authotization_code"
+					grant_type: "authorization_code"
 				}
 				auth = Auth::Basic.new 'YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD', 'L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK'
 
@@ -50,8 +50,8 @@ module	Moip
 					"Content-Type": "application/x-www-form-urlencoded",
 					"Authorization": auth.header
 				}
-				'https://connect-sandbox.moip.com.br'
 				@response = client.post("#{base_path}/token", params, header)
+				binding.pry
 				@response
 				# return Response.new @response, @response.parsed_response
 			end
