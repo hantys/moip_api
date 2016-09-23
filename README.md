@@ -1,9 +1,9 @@
 ### Usuario para teste de conta secundaria
 conta teste:
   -https://conta-sandbox.moip.com.br
-  -souriptor@hotmail.com
-  -Moip_teste321
-  -MPA-909AD3837493
+  -<EMAIL>  
+  -<PASSWORD>
+  -<MOIP_ID>
 
 ### Construindo a gem
 gem build ./moip_sandbox.gemspec
