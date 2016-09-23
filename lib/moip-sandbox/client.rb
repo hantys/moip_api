@@ -4,15 +4,15 @@ module Moip
 
 		attr_reader :env, :auth, :uri, :host
 
-		def initialize(env = :sandbox, auth = nil, host=nil, version = :v2, opts = {})
+		def initialize(env = :development, auth = nil, host=nil, version = :v2, opts = {})
 	        @env, @auth, @version, @opts, @host = env.to_sym, auth, version, opts, host
 
 			@uri = get_base_uri
 			self.class.base_uri @uri
 		end
 
-		def sandbox?
-			env == :sandbox
+		def development?
+			env == :development
 		end
 
 		def production?
