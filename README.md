@@ -14,7 +14,7 @@ gem build ./moip_sandbox.gemspec
 ```
 gem install ./moip-sandbox-X.X.X.gem
 require 'moip_sandbox'
-gem "moip_sandbox", :git => "git@github.com:caverna-labs/moip-sandbox.git"
+gem "moip_sandbox", :git => "git://github.com/caverna-labs/moip-sandbox.git"
 ```
 
 ### Configurando dados de ambiente
