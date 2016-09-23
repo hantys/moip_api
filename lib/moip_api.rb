@@ -8,7 +8,6 @@ require "forwardable"
 
 require 'moip_api/api'
 require 'moip_api/config'
-require 'moip_api/engine'
 require 'moip_api/client'
 require 'moip_api/config'
 require 'moip_api/client_factory'
