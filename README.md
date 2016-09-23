@@ -6,12 +6,16 @@ conta teste:
   -<MOIP_ID>
 
 ### Construindo a gem
+```
 gem build ./moip_sandbox.gemspec
+```
 
 ### Instalanado a gem
+```
 gem install ./moip-sandbox-X.X.X.gem
 require 'moip_sandbox'
 gem "moip_sandbox", :git => "git@github.com:caverna-labs/moip-sandbox.git"
+```
 
 ### Configurando dados de ambiente
 ```
