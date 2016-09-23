@@ -2,7 +2,7 @@
 conta teste:
   -https://conta-sandbox.moip.com.br
   -souriptor@hotmail.com
-  -pi854098
+  -Moip_teste321
   -MPA-909AD3837493
 
 ### Construindo a gem
@@ -10,12 +10,18 @@ gem build ./moip_sandbox.gemspec
 
 ### Instalanado a gem
 gem install ./moip-sandbox-X.X.X.gem
+require 'moip_sandbox'
 
 ### Configurando dados de ambiente
 ```
 Moip.configure do |config|
   config.api_token="YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD"
   config.api_secret="L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK"
+  config.app_id = 'APP-IYDQO7981OKQ'
+  config.app_access_token = '96236c8ce7944d80a98cf64ea7f3f2e5_v2'
+  config.app_secret = '071f4f6be2ca47e0bdc4f7d9242273f2'
+  config.app_redirect_uri = 'http://teste.ruaalecrim.com.br/auth/moip'
+  config.environment = :development
 end
 ``` 
 

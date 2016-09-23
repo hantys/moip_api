@@ -4,8 +4,9 @@ module Moip
 	module Auth
 		class Basic
 
-			def initialize(token, secret)
-				@token, @secret = token, secret
+			def initialize
+				@token, @secret = Moip.api_token, Moip.api_secret
+
 			end
 
 			def header

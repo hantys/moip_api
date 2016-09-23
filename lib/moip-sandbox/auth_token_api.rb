@@ -14,7 +14,7 @@ module	Moip
 			end
 
 			def get_connect_base_uri
-				if client.production?
+				if Moip.environment == :production
 					""
 				else
 					"https://connect-sandbox.moip.com.br"
@@ -23,8 +23,9 @@ module	Moip
 
 			def get_permission_uri
 				# TODO: Read values form yaml file
-				@app_id = "APP-IYDQO7981OKQ"
-				@redirect_uri = "http://teste.ruaalecrim.com.br/auth/moip"
+
+				@app_id = Moip.app_id
+				@redirect_uri = Moip.app_redirect_uri
 				@host = "#{get_connect_base_uri}/oauth/authorize"
 				@params = "response_type=code&client_id=#{@app_id}&redirect_uri=#{@redirect_uri}&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO"
 				"#{@host}?#{@params}"
@@ -34,13 +35,13 @@ module	Moip
 				# TODO: Read from .yaml file
 				params = URI.encode_www_form([
 					["code", code],
-					["client_id", "APP-IYDQO7981OKQ"],
-					["client_secret", "071f4f6be2ca47e0bdc4f7d9242273f2"],
-					["redirect_uri", "http://teste.ruaalecrim.com.br/auth/moip"],
+					["client_id", Moip.app_id],
+					["client_secret", Moip.app_secret],
+					["redirect_uri", Moip.app_redirect_uri],
 					["grant_type", "authorization_code"]
 				])
 
-				auth = Auth::Basic.new 'YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD', 'L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK'
+				auth = Auth::Basic.new
 
 				header = {
 					"Content-Type": "application/x-www-form-urlencoded",
