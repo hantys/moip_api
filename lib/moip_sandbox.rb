@@ -7,6 +7,7 @@ require 'recursive-open-struct'
 
 require 'moip-sandbox/api'
 require 'moip-sandbox/client'
+require 'moip-sandbox/config'
 require 'moip-sandbox/client_factory'
 require 'moip-sandbox/response'
 require 'moip-sandbox/account_api'
@@ -23,10 +24,9 @@ module Moip
 			@configuration ||= Moip::Config.new
 		end
 
-		def configure(&:block)
+		def configure(&block)
 			yield configuration
 		end
 	end
-
-
 end
+

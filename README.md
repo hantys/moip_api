@@ -11,6 +11,13 @@ gem build ./moip_sandbox.gemspec
 ### Instalanado a gem
 gem install ./moip-sandbox-X.X.X.gem
 
+### Configurando dados de ambiente
+```
+Moip.configure do |config|
+  config.api_token="YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD"
+  config.api_secret="L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK"
+end
+``` 
 
 ### Instanciando api
 ```
