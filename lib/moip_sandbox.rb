@@ -19,5 +19,14 @@ require 'moip-sandbox/resource/user'
 
 module Moip
 	class << self
+		def configuration
+			@configuration ||= Moip::Config.new
+		end
+
+		def configure(&:block)
+			yield configuration
+		end
 	end
+
+
 end
