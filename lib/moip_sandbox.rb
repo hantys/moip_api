@@ -8,6 +8,7 @@ require "forwardable"
 
 require 'moip-sandbox/api'
 require 'moip-sandbox/config'
+require 'moip-sandbox/engine'
 require 'moip-sandbox/client'
 require 'moip-sandbox/config'
 require 'moip-sandbox/client_factory'
