@@ -15,13 +15,13 @@ require 'moip_sandbox'
 ### Configurando dados de ambiente
 ```
 Moip.configure do |config|
-  config.api_token="YJNG2JJ7EF9D04DOMTGE8T6ZC2TCZACD"
-  config.api_secret="L4BH67OEOPX8L8KKH9HTTSWMCFZH5H2BYS18FOUK"
-  config.app_id = 'APP-IYDQO7981OKQ'
-  config.app_access_token = '96236c8ce7944d80a98cf64ea7f3f2e5_v2'
-  config.app_secret = '071f4f6be2ca47e0bdc4f7d9242273f2'
-  config.app_redirect_uri = 'http://teste.ruaalecrim.com.br/auth/moip'
-  config.environment = :development
+  config.api_token=ENV["TOKEN"]
+  config.api_secret=ENV["SECRET"]
+  config.app_id = ENV["APP_ID"]
+  config.app_access_token=ENV["ACCESS_TOKEN"]
+  config.app_secret = ENV["APP_SECRET"]
+  config.app_redirect_uri = ENV["REDIRECT_URI"]
+  config.environment = ENV["ENVIRONMENT"]
 end
 ``` 
 
