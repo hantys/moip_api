@@ -1,6 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'moip_api/version'
+# lib = File.expand_path('../lib', __FILE__)
+# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "./lib/moip_api"
 
 Gem::Specification.new do |spec|
 	spec.name          = "moip_api"
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 	spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
 
-	spec.require_paths = ["lib"]
+	# spec.require_paths = ["lib"]
 
 	spec.add_dependency "httparty"
 	spec.add_dependency "active_data"
