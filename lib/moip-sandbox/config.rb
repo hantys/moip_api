@@ -3,8 +3,8 @@ module Moip
     attr_reader :app_config
 
     def initialize
-      raw_config = File.read("#{Rails.root}/config/moip.yml")
-      @app_config = YAML.load(raw_config)
+      @app_config ||= YAML.load_file(Rails.root.join("config/pagseguro.yml"))
+      binding.pry
     end
 
     def api_token
