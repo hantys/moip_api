@@ -1,10 +1,10 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'moip_api/version'
+# require 'moip_api/version'
 
 Gem::Specification.new do |spec|
 	spec.name          = "moip_api"
-	spec.version       = Moip::VERSION
+	spec.version       = "0.0.1"
 	spec.authors       = ["Renato Filho", "Pedro Fausto"]
 	spec.email         = ["renatosousafilho@gmail.com", "pedro.fausto@hotmail.com"]
 	spec.summary       = %q{Cliente ruby para api v1 moip}

@@ -7,14 +7,14 @@ conta teste:
 
 ### Construindo a gem
 ```
-gem build ./moip_sandbox.gemspec
+gem build ./moip_api.gemspec
 ```
 
 ### Instalanado a gem
 ```
-gem install ./moip-sandbox-X.X.X.gem
-require 'moip_sandbox'
-gem "moip_sandbox", :git => "git://github.com/caverna-labs/moip-sandbox.git"
+gem install ./moip_api-X.X.X.gem
+require 'moip_api'
+gem "moip_api", :git => "git://github.com/caverna-labs/moip_api.git"
 ```
 
 ### Configurando dados de ambiente
