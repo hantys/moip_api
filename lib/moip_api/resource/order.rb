@@ -4,59 +4,93 @@ module Moip
     class Order
       include ActiveData::Model
 
-      attribute :email, String, default: 'oi'
-      attribute :name, String, default: 'oi'
-      attribute :cpf, String, default: 'oi'
-      attribute :birthdate, String, default: 'oi'
-      attribute :ddd, String, default: 'oi'
-      attribute :phone, String, default: 'oi'
-      attribute :street, String, default: 'oi'
-      attribute :number, String, default: 'oi'
-      attribute :district, String, default: 'oi'
-      attribute :cep, String, default: 'oi'
-      attribute :city, String, default: 'oi'
-      attribute :state, String, default: 'oi'
-      attribute :id, String, default: 'oi'
-      attribute :login, String, default: 'oi'
-      attribute :access_token, String, default: 'oi'
-      attribute :channel_id, String, default: 'oi'
-      attribute :type, String, default: 'oi'
-      attribute :transparent_account, String, default: 'oi'
-      attribute :created_at, String, default: 'oi'
-      attribute :link, String, default: 'oi'
-      attribute :set_password, String, default: 'oi'
+      attribute :order_id, String
+      attribute :shipping, Integer, default: 0
+      attribute :addition, Integer, default: 0
+      attribute :discount, Integer, default: 0
 
-      # validates :email, :name, :cpf, presence: true
+      attribute :order_itens, Array, default: []
+      attribute :receivers, Array, default: []
+
+      attribute :customer_id, String
+      attribute :customer_fullname, String
+      attribute :customer_email, String
+      attribute :customer_ddd, String, default: ''
+      attribute :customer_phone, String, default: ''
+      attribute :customer_cpf, String, default: ''
+
+      attribute :shipping_street, String, default: ''
+      attribute :shipping_number, String, default: ''
+      attribute :shipping_district, String, default: ''
+      attribute :shipping_cep, String, default: ''
+      attribute :shipping_city, String, default: ''
+      attribute :shipping_state, String, default: ''
+      attribute :shipping_complement, String, default: ''
+
 
       def to_json
         data = {
-          "email": {
-              "address": email
+          "ownId": order_id, #obrigatorio
+          "amount": { #valores adicionais do pedido ex: frete, adicional. Seram somados no valor final do pedido
+            "currency": "BRL",
+            "subtotals": {
+              "shipping": shipping.gsub('.', '').gsub(',',''),
+              'addition': addition.gsub('.', '').gsub(',',''),
+              'discount': discount.gsub('.', '').gsub(',','')
+            }
           },
-          "person": {
-              "name": name,
-              "lastName": " ",
-              "taxDocument": {
-                  "type": "CPF",
-                  "number": cpf
+          "items":
+          [
+            order_itens.each do |item|
+              {
+                "product": item['name'], #obrigatorio
+                "quantity": item['qnt'], #obrigatorio
+                "detail": item['detail'],
+                "price": item['value'].gsub('.', '').gsub(',','') #obrigatorio
               },
-              "birthDate": Date.parse(birthdate).to_s,
-              "phone": {
-                  "countryCode": "55",
-                  "areaCode": ddd,
-                  "number": phone
-              },
-              "address": {
-                  "street": street,
-                  "streetNumber": number,
-                  "district": district,
-                  "zipCode": cep,
-                  "city": city,
-                  "state": state,
-                  "country": "BRA"
+            end
+          ],
+          "customer": {
+            "ownId": customer_id, #obrigatorio
+            "fullname": customer_fullname, #obrigatorio
+            "email": customer_email, #obrigatorio
+            "taxDocument": {
+              "type": "CPF",
+              "number": customer_cpf
+            },
+            "phone": {
+              "countryCode": "55",
+              "areaCode": customer_ddd,
+              "number": customer_phone
+            },
+            "shippingAddress": {
+              "street": shipping_street,
+              "streetNumber": shipping_number,
+              "complement": shipping_complement,
+              "district": shipping_district,
+              "city": shipping_city,
+              "state": shipping_state,
+              "country": "BRA",
+              "zipCode": shipping_cep
+            }
+          },
+          "receivers": [
+            receivers.each do |receiver|
+              {
+                'type': receiver['type'],
+                'moipAccount': {
+                  'id': receiver['moip_id']
+                },
+                'amount': {
+                  if receiver.key?(:fixed)
+                    'fixed': receiver['fixed'].gsub('.', '').gsub(',',''),
+                  elsif receiver.key?(:percentual)
+                    'percentual': receiver['percentual'],
+                  end
+                }
               }
-          },
-          "type": "MERCHANT"
+            end
+          ]
         }
 
         return data

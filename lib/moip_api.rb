@@ -5,7 +5,6 @@ require "base64"
 require 'active_data'
 require 'recursive-open-struct'
 require "forwardable"
-require 'moip2'
 
 require 'moip_api/api'
 require 'moip_api/config'

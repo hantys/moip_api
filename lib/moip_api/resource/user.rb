@@ -4,27 +4,27 @@ module Moip
     class User
       include ActiveData::Model
 
-      attribute :email, String
-      attribute :name, String
-      attribute :cpf, String
-      attribute :birthdate, String
-      attribute :ddd, String
-      attribute :phone, String
-      attribute :street, String
-      attribute :number, String
-      attribute :district, String
-      attribute :cep, String
-      attribute :city, String
-      attribute :state, String
-      attribute :id, String
-      attribute :login, String
-      attribute :access_token, String
-      attribute :channel_id, String
-      attribute :type, String
-      attribute :transparent_account, String
-      attribute :created_at, String
-      attribute :link, String
-      attribute :set_password, String
+      attribute :email, String, default: ''
+      attribute :name, String, default: ''
+      attribute :cpf, String, default: ''
+      attribute :birthdate, String, default: ''
+      attribute :ddd, String, default: ''
+      attribute :phone, String, default: ''
+      attribute :street, String, default: ''
+      attribute :number, String, default: ''
+      attribute :district, String, default: ''
+      attribute :cep, String, default: ''
+      attribute :city, String, default: ''
+      attribute :state, String, default: ''
+      attribute :id, String, default: ''
+      attribute :login, String, default: ''
+      attribute :access_token, String, default: ''
+      attribute :channel_id, String, default: ''
+      attribute :type, String, default: ''
+      attribute :transparent_account, String, default: ''
+      attribute :created_at, String, default: ''
+      attribute :link, String, default: ''
+      attribute :set_password, String, default: ''
 
       # validates :email, :name, :cpf, presence: true
 
