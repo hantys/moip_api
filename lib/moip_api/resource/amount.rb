@@ -3,7 +3,8 @@ module Moip
     class Amount
       include ActiveData::Model
       
-      attr_accessor :currency, :subtotals
+      attribute :currency, type: String
+      attribute :subtotals, type: Hash
       
 
     end
