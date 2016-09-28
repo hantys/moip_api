@@ -15,12 +15,12 @@ module Moip
       def create(order)
         @response = client, client.post(base_path, order)
         @response
-	      # return Response.new @response, @response.parsed_response
+	      return Response.new @response, @response
       end
 
       def show(id)
         @response = client, client.get("#{base_path}/#{id}")
-	      return Response.new @response, @response.parsed_response
+	      return Response.new @response, @response
       end
 
     end
