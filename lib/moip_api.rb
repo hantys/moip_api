@@ -24,6 +24,7 @@ require 'moip_api/auth/oauth'
 #resource
 require 'moip_api/resource/account'
 require 'moip_api/resource/user'
+require 'moip_api/resource/customer'
 require 'moip_api/resource/address'
 require 'moip_api/resource/item'
 require 'moip_api/resource/amount'

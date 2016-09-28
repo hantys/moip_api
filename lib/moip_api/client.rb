@@ -25,8 +25,8 @@ module Moip
 
 			opts[:headers].merge!(
 				{
-					"Content-Type": "application/json",
-					"Authorization": auth.header
+					'Content-Type' => 'application/json',
+					'Authorization' => auth.header
 				}
 			)
 

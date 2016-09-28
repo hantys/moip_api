@@ -12,9 +12,8 @@ module Moip
       attribute :district, type: String
       attribute :state, type: String
       attribute :type, type: String
-      attribute :country, type: String
+      attribute :country, type: String, default: 'BRA'
 
     end
   end
 end
-
