@@ -9,12 +9,13 @@ module Moip
       end
 
       def base_path
-        "/v2/orders"
+        "/orders"
       end
 
       def create(order)
         @response = client, client.post(base_path, order)
-	      return Response.new @response, @response.parsed_response
+        @response
+	      # return Response.new @response, @response.parsed_response
       end
 
       def show(id)

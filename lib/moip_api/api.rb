@@ -19,7 +19,7 @@ module Moip
     end
 
     def payment
-      Moip::V2::PaymentApi.new(factory.default_basic)
+      Moip::V2::PaymentApi.new(factory.connect_basic)
     end
   end
 end

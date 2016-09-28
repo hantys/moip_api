@@ -2,7 +2,7 @@ module Moip
 	class Client
 		include HTTParty
 
-		attr_reader :env, :auth, :uri, :host
+		attr_accessor :env, :auth, :uri, :host
 
 		def initialize(env = :development, auth = nil, host=nil, version = :v2, opts = {})
 	        @env, @auth, @version, @opts, @host = env.to_sym, auth, version, opts, host
