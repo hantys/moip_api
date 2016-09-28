@@ -6,7 +6,7 @@ module Moip
 
 		def default_basic
 			# token, secret = READ from yml
-			auth = Moip::Auth::Basic
+      auth = Moip::Auth::Basic.new
 			client = Moip::Client.new(Moip.environment, auth)
 		end
 
