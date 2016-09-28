@@ -12,8 +12,10 @@ require_relative './configuration'
 
 @customer = Moip::Resource::Customer.new(ownId: 'fefe', fullname: 'jose atonio', email: 'teste@teste.com', taxDocument: {type: 'CPF', number: '037.852.496-83'}, phone: {countryCode: '55', areaCode: '86', number: '99999-9999'}, shippingAddress: @address)
 
+# @ownId = Moip::Utils.generate_own_id
+@ownId = "pedido_exemplo_alecrim-001"
 
-@order = Moip::Resource::Order.new(ownId: "0001", amount: @amount, items: [@item], customer: @customer)
+@order = Moip::Resource::Order.new(ownId: @ownId, amount: @amount, items: [@item], customer: @customer)
 
 @api = Moip::Api.new
 
