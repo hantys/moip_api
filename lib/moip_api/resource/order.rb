@@ -6,6 +6,7 @@ module Moip
 
       attribute :amount, type: Object
       attribute :receivers, type: Array
+      attribute :items, type: Array
 
     end
   end

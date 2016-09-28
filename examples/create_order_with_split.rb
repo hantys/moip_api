@@ -7,6 +7,6 @@ require 'pry'
 
 @item = Moip::Resource::Item.new(detail: "Product 1", quantity: 2, price: 2000, product: "Description of a product...")
 
-@order = Moip::Resource::Order.new(amount: @amount, receivers: [@receiver])
+@order = Moip::Resource::Order.new(amount: @amount, receivers: [@receiver], items: [@item])
 
 binding.pry
