@@ -9,8 +9,8 @@ module Moip
       attribute :addition, Integer, default: 0
       attribute :discount, Integer, default: 0
 
-      attribute :order_itens, Array, default: []
-      attribute :receivers, Array, default: []
+      attr_reader :order_itens
+      attr_reader :receivers
 
       attribute :customer_id, String
       attribute :customer_fullname, String
@@ -27,6 +27,9 @@ module Moip
       attribute :shipping_state, String, default: ''
       attribute :shipping_complement, String, default: ''
 
+      def initialize(order_itens = [], receivers = [])
+        @order_itens, @receivers = order_itens, receivers
+      end
 
       def to_json
         data = {
@@ -39,14 +42,13 @@ module Moip
               'discount': discount.gsub('.', '').gsub(',','')
             }
           },
-          "items":
-          [
+          "items": [
             order_itens.each do |item|
               {
-                "product": item['name'], #obrigatorio
-                "quantity": item['qnt'], #obrigatorio
-                "detail": item['detail'],
-                "price": item['value'].gsub('.', '').gsub(',','') #obrigatorio
+                "product": item[:name], #obrigatorio
+                "quantity": item[:qnt], #obrigatorio
+                "detail": item[:detail],
+                "price": item[:value] #obrigatorio
               },
             end
           ],
@@ -77,18 +79,18 @@ module Moip
           "receivers": [
             receivers.each do |receiver|
               {
-                'type': receiver['type'],
+                'type': receiver[:type],
                 'moipAccount': {
-                  'id': receiver['moip_id']
+                  'id': receiver[:moip_id]
                 },
                 'amount': {
                   if receiver.key?(:fixed)
-                    'fixed': receiver['fixed'].gsub('.', '').gsub(',',''),
-                  elsif receiver.key?(:percentual)
-                    'percentual': receiver['percentual'],
+                    'fixed': receiver[:fixed]
+                  else
+                    'percentual': receiver[:percentual]
                   end
                 }
-              }
+              },
             end
           ]
         }
