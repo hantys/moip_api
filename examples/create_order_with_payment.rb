@@ -27,9 +27,7 @@ require_relative './configuration'
 
 @api = Moip::Api.new
 
-@response_order = @api.order.create(@order)
-
-@order_created = RecursiveOpenStruct.new @response_order[1]
+@order_created = @api.order.create(@order)
 
 @response_payment = @api.payment.create(@order_created.id, @payment)
 
