@@ -33,8 +33,8 @@ module Moip
 
 	      def create(user)
 	        @user = Moip::Resource::User.new(user)
-	        @response = client.post(base_path, @user.to_json)
-	        return Response.new @response, @response.parsed_response
+	        @response = client.post(base_path, @user)
+          @response
 	      end
 
 	      def find(moip_id)
