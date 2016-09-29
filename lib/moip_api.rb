@@ -32,6 +32,9 @@ require 'moip_api/resource/amount'
 require 'moip_api/resource/receiver'
 require 'moip_api/resource/order'
 require 'moip_api/resource/payment'
+require 'moip_api/resource/credit_card'
+require 'moip_api/resource/funding_instrument'
+require 'moip_api/resource/holder'
 
 module Moip
 	class << self
