@@ -15,7 +15,7 @@ module Moip
       def create(order)
         @response = client, client.post(base_path, order)
         @response
-	      return Response.new @response, @response
+        # return Response.new @response, @response.parsed_response
       end
 
       def show(id)
