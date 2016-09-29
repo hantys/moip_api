@@ -9,8 +9,9 @@ module Moip
       end
 
       def create(order_id, payment)
-        @response= client.post("/v2/orders/#{order_id}/payments", payment)
-        return Response.new @response, @response
+        @response= client.post("/orders/#{order_id}/payments", payment)
+        @response
+        # return Response.new @response, @response
       end
 
     end

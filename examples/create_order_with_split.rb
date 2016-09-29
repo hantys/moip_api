@@ -21,4 +21,5 @@ require_relative './configuration'
 
 @response = @api.order.create(@order)
 
-binding.pry
+p @response
+

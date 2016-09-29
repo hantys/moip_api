@@ -3,7 +3,7 @@ module Moip
     class Holder
       include ActiveData::Model
 
-      attribute :fullName, type: Object
+      attribute :fullname, type: String
       attribute :birthdate, type: String
       attribute :phone, type: Hash
       attribute :taxDocument, type: Hash
