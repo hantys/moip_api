@@ -237,4 +237,5 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Envie um Pull Request
 
 O código, os commits e os comentários devem ser em inglês.
+
 Adicione exemplos para sua nova feature.
