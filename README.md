@@ -225,3 +225,16 @@ require 'moip_api'
 @response = @api.account.create(@account)
 
 ```
+
+## Contribuições
+
+Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
+
+* Faça um fork
+* Adicione sua feature ou correção de bug (`git checkout -b my-new-feature`)
+* Commit suas mudanças (`git commit -am 'Added some feature'`)
+* Rode um push para o branch (`git push origin my-new-feature`)
+* Envie um Pull Request
+
+O código, os commits e os comentários devem ser em inglês.
+Adicione exemplos para sua nova feature.
