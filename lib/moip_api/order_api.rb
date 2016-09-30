@@ -19,7 +19,7 @@ module Moip
 
       def show(id)
         @response = client.get("#{base_path}/#{id}")
-	      return Response.new @response, @response
+        @response
       end
 
     end

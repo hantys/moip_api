@@ -75,8 +75,14 @@ require 'moip_api'
 
 ### Consultar pedido
 ```ruby
-# pending
+require 'moip_api'
 
+@api = Moip::Api.new
+
+@order_id = "ORD-X7FR9T67K50C"
+
+@response = @api.order.show(@order_id)
+=>  #<RecursiveOpenStruct id="ORD-X7FR9T67K50C", own_id="pedido_exemplo_alecrim-001", status="PAID", created_at="2016-09-28T17:34:23.000-03", updated_at="2016-09-28T17:48:57.000-03", amount={:total=>4050, :fees=>494, :refunds=>0, :liquid=>3556, :other_receivers=>0, :currency=>"BRL", :subtotals=>{:shipping=>50, :addition=>0, :discount=>0, :items=>4000}}, items=[{:product=>"Description of a product...",}] ...>
 ```
 
 ## Pagamentos
