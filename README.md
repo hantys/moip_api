@@ -110,14 +110,28 @@ require 'moip_api'
 
 ### Conectar contas já existentes
 
-* Gerar link para conexão
+=== Gerar link para conexão
 ```ruby
-# pending
+require 'moip_api'
+
+@api = Moip::Api.new
+
+@response = @api.connect.get_permission_uri
+# => https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-M11STAPPOAUt&redirect_uri=https://url.com.br/callback.php&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO
 ```
 
-* Implementar callback para receber resposta do Moip
+=== Implementar callback para receber resposta do Moip
+
+* config/routes.rb
 ```ruby
-# pending
+get '/auth/moip' => 'users#moip'
+```
+
+* app/controllers/users_controller.rb
+```ruby
+def moip
+  @api.connect.generate_token(params['code'])
+end
 ```
 
 ### Criar nova conta
