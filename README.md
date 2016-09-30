@@ -37,3 +37,43 @@ Moip.configure do |config|
 end
 ```
 
+## Pedidos
+Para processar pagamentos o Moip exige que seja criado um pedido previamente onde são descristas dados relativos ao pedido como a lista do items que vão ser cobrados e a lista de possiveis recebedores de um pedido. Abaixo está a implementação da criação de um pedido
+
+```ruby
+require 'moip_api'
+
+# especificação do valor de envido
+@amount = Moip::Resource::Amount.new(currency: "BRL", subtotals: {shipping: 50})
+
+# especificação do items ou serviços a serem processados no pagamento
+@item = Moip::Resource::Item.new(detail: "Product 1", quantity: 2, price: 2000, product: "Description of a product...")
+
+# especificação da lista das contas que vão receber pagamento na transação
+@receiver = Moip::Resource::Receiver.new(type: "SECONDARY", moipAccount: {}, amount: {})
+
+# especificação do endereço do cliente 
+@address = Moip::Resource::Address.new(city: "São Paulo", complement: "8", street: "Avenida Faria Lima", streetNumber: "2927", zipCode: "0123400000", state: "SP", type: "SHIPPING", country: "BRA")
+
+# especificação dos dados do cliente do pedido
+@customer = Moip::Resource::Customer.new(ownId: 'fefe', fullname: 'jose atonio', email: 'teste@teste.com', taxDocument: {type: 'CPF', number: '037.852.496-83'}, phone: {countryCode: '55', areaCode: '86', number: '99999-9999'}, shippingAddress: @address)
+
+# id próprio do pedido
+@ownId = "pedido_exemplo_alecrim-001"
+
+# Especificão final do pedido
+@order = Moip::Resource::Order.new(ownId: @ownId, amount: @amount, items: [@item], customer: @customer)
+
+@api = Moip::Api.new
+
+@response = @api.order.create(@order)
+
+```
+
+## Pagamentos
+
+## Contas secundárias
+
+### Conectar contas já existentes
+
+### Criar nova conta
