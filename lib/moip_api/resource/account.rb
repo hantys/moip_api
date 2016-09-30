@@ -9,7 +9,7 @@ module Moip
       class Base
         include ActiveData::Model
 
-        attribute :email, type: Hash
+        attribute :email, type: String
         attribute :person, type: Hash
         attribute :site, type: String
         attribute :type, type: String

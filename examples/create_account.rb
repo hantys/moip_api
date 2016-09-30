@@ -4,7 +4,7 @@ require 'pry'
 
 @address = Moip::Resource::Address.new
 @person = Moip::Resource::Account::Person.new
-@account = Moip::Resource::Account::Base.new email: 'johndoe@mail.com.br'
+@account = Moip::Resource::Account.new email: 'johndoe@mail.com.br'
 
 p @account
 
