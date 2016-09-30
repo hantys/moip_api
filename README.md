@@ -110,6 +110,16 @@ require 'moip_api'
 
 ### Conectar contas já existentes
 
+* Gerar link para conexão
+```ruby
+# pending
+```
+
+* Implementar callback para receber resposta do Moip
+```ruby
+# pending
+```
+
 ### Criar nova conta
 ```ruby
 require 'moip_api'
