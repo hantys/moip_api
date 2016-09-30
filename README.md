@@ -8,8 +8,9 @@ A biblioteca Moip em Ruby é um conjunto de classes de domínio que facilitam, p
  - Criar [requisições de pagamentos] 
  - Consultar [pedidos por código] 
  - Consultar [pagamentos por código] 
- - Criar [contas de marketplace]
+ - Criar [requisições de contas de marketplace]
  - Consultar [contas de marketplace]
+ - Solicitar [permissão de terceiros]
  
 ## Requisitos
  - [Ruby] 2.3.0+
@@ -239,3 +240,12 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 O código, os commits e os comentários devem ser em inglês.
 
 Adicione exemplos para sua nova feature.
+
+  [requisições de pedidos]: http://dev.moip.com.br/referencia-api/#criar-pedido-post
+  [requisições de pagamentos]: http://dev.moip.com.br/referencia-api/#criar-pagamento-post
+  [pedidos por código]: http://dev.moip.com.br/referencia-api/#consultar-pedido-get
+  [pagamentos por código]: http://dev.moip.com.br/referencia-api/#consultar-pagamento-get
+  [requisições de contas de marketplace]: http://dev.moip.com.br/referencia-api/#criar-conta-moip-post
+  [contas de marketplace]: http://dev.moip.com.br/referencia-api/#consultar-conta-moip-get
+  [permissão de terceiros]: http://dev.moip.com.br/referencia-api/#permisses-de-terceiros-oauth
+  
