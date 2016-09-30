@@ -17,9 +17,22 @@ require_relative './configuration'
 
 @order = Moip::Resource::Order.new(ownId: @ownId, amount: @amount, items: [@item], customer: @customer)
 
+@holder = Moip::Resource::Holder.new fullname: "Joao Silva", birthdate: "1988-12-30", taxDocument: { type: "CPF", number: "12345679891"}, phone: {}
+
+@credit_card = Moip::Resource::CreditCard.new expirationMonth: 12, expirationYear: 25, number: "5555666677778884", cvc: "123", holder: @holder
+
+@funding_instrument = Moip::Resource::FundingInstrument.new method: "CREDIT_CARD", creditCard: @credit_card
+
+@payment = Moip::Resource::Payment.new installmentCount: 2, fundingInstrument: @funding_instrument
+
 @api = Moip::Api.new
+p @api.order.client.convert_hash_keys_to(:camel_case, @order).to_json
 
-@response = @api.order.create(@order)
+#@order_created = @api.order.create(@order)
+#
+#@response_payment = @api.payment.create(@order_created.id, @payment)
+#
+#p @response_payment
 
-p @response
+
 

@@ -39,9 +39,7 @@ module Moip
 			else
 				resp = self.class.get path, headers: headers
 			end
-
-			resp.parsed_response
-			# create_response resp
+			create_response resp
 		end
 
 		def post(path, params, headers = nil)
@@ -51,12 +49,22 @@ module Moip
 			else
 				resp = self.class.post path, headers: headers, body: params
 			end
-
-			resp
-			# create_response resp
+      create_response resp
 		end
 
+    def convert_hash_keys_to(conversion, value)
+      case value
+        when Array
+          value.map { |v| convert_hash_keys_to(conversion, v) }
+        when Hash
+          Hash[value.map { |k, v| [send(conversion, k).to_sym, convert_hash_keys_to(conversion, v)] }]
+        else
+          value
+       end
+    end
+
 		private
+
 		def get_base_uri
 			return ENV["base_uri"] if ENV["base_uri"]
 
@@ -73,12 +81,32 @@ module Moip
 			end
 		end
 
-		def create_response(resp)
-			raise NotFoundError, "Resource not found" if resp.code == 404
-		end
 
-		def basic_auth
-			{username: @auth[:token], password: @auth[:secret]}
-		end
-	end
-end
+    def camel_case(str)
+      return str.to_s if str.to_s !~ /_/ && str.to_s =~ /[A-Z]+.*/
+      words = str.to_s.split('_')
+      (words[0..0] << words[1..-1].map{|e| e.capitalize}).join
+    end
+
+    def snake_case(str)
+        str.gsub(/::/, '/').
+            gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+            gsub(/([a-z\d])([A-Z])/,'\1_\2').
+            tr("-", "_").
+            downcase
+    end
+ 
+ 		def create_response(resp)
+      json = convert_hash_keys_to(:snake_case, resp.parsed_response)
+      response = RecursiveOpenStruct.new(json, :recurse_over_arrays => true)
+      response
+ 		end
+ 
+ 		def basic_auth
+ 			{username: @auth[:token], password: @auth[:secret]}
+ 		end
+ 	end
+ end
+ 
+ 
+ 
