@@ -1,4 +1,4 @@
-# Biblioteca de integração PagSeguro em Ruby
+# Biblioteca de integração Moip em Ruby
 
 ## Descrição
 
