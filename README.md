@@ -108,9 +108,15 @@ require 'moip_api'
 
 ## Contas secundárias
 
+Para utilizar a feature de Marketplace do Moip é necessário utilizar contas secundárias que vão ser as contas de vendedores gerenciadas por uma conta primária. Essas contas podem ser tanto criadas de forma automatizada como conectar a uma conta MOIP já existente bastando que o usuário conceda as permissões necessárias. Nos tópicos abaixo são descritas as duas formas de uso deste recurso da API via biblioteca com as eventuais configurações a nível do framework Ruby on Rails.
+
 ### Conectar contas já existentes
 
+Para que o usuário que já tem uma conta MOIP registrada é necessário gerar um link para que o mesmo conceda as permissões de acesso necessárias. Uma vez com esse link a requisição redireciona para o ambiente de conexão da plataforma MOIP, caso o usuário já está logado na sua plataforma será solicitado que ele confirme fornecer as permissões requisitadas e após isso será redirecioado de volta para um endpoint de callback para qual o MOIP envia uma série de parametros com a conexão da conta. Caso o usuário não esteja logado, ele será solicitado a fazer seu login e o fluxo continua da forma como foi descrito anteriormente.
+
 #### Gerar link para conexão
+
+
 ```ruby
 require 'moip_api'
 
@@ -118,6 +124,11 @@ require 'moip_api'
 
 @response = @api.connect.get_permission_uri
 # => https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-M11STAPPOAUt&redirect_uri=https://url.com.br/callback.php&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO
+```
+
+* Exemplo de uso em uma view Rails
+```ruby
+<%= link_to @api.connect.get_permission_uri, 'Conectar conta Moip' %>
 ```
 
 #### Implementar callback para receber resposta do Moip
