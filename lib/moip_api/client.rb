@@ -52,7 +52,19 @@ module Moip
       create_response resp
 		end
 
+    def convert_hash_keys_to(conversion, value)
+      case value
+        when Array
+          value.map { |v| convert_hash_keys_to(conversion, v) }
+        when Hash
+          Hash[value.map { |k, v| [send(conversion, k).to_sym, convert_hash_keys_to(conversion, v)] }]
+        else
+          value
+       end
+    end
+
 		private
+
 		def get_base_uri
 			return ENV["base_uri"] if ENV["base_uri"]
 
@@ -69,16 +81,6 @@ module Moip
 			end
 		end
 
-    def convert_hash_keys_to(conversion, value)
-      case value
-        when Array
-          value.map { |v| convert_hash_keys_to(conversion, v) }
-        when Hash
-          Hash[value.map { |k, v| [send(conversion, k).to_sym, convert_hash_keys_to(conversion, v)] }]
-        else
-          value
-       end
-    end
 
     def camel_case(str)
       return str.to_s if str.to_s !~ /_/ && str.to_s =~ /[A-Z]+.*/

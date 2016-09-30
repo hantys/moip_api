@@ -26,12 +26,13 @@ require_relative './configuration'
 @payment = Moip::Resource::Payment.new installmentCount: 2, fundingInstrument: @funding_instrument
 
 @api = Moip::Api.new
+p @api.order.client.convert_hash_keys_to(:camel_case, @order).to_json
 
-@order_created = @api.order.create(@order)
-
-@response_payment = @api.payment.create(@order_created.id, @payment)
-
-p @response_payment
+#@order_created = @api.order.create(@order)
+#
+#@response_payment = @api.payment.create(@order_created.id, @payment)
+#
+#p @response_payment
 
 
 

@@ -24,6 +24,4 @@ require 'pry'
 
 @response = HTTParty.post "#{@host}/v2/orders", headers: @headers, body: @body.to_json
 
-
 p @response
-binding.pry
