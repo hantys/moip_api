@@ -110,7 +110,7 @@ require 'moip_api'
 
 ### Conectar contas já existentes
 
-=== Gerar link para conexão
+#### Gerar link para conexão
 ```ruby
 require 'moip_api'
 
@@ -120,7 +120,7 @@ require 'moip_api'
 # => https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-M11STAPPOAUt&redirect_uri=https://url.com.br/callback.php&scope=RECEIVE_FUNDS,REFUND,MANAGE_ACCOUNT_INFO
 ```
 
-=== Implementar callback para receber resposta do Moip
+#### Implementar callback para receber resposta do Moip
 
 * config/routes.rb
 ```ruby
