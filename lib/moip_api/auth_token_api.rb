@@ -48,7 +48,7 @@ module	Moip
 					"Authorization": auth.header
 				}
 				@response = client.post("#{base_path}/token", params, header)
-				return Response.new @response, @response
+				@response
 			end
 		end
 	end
