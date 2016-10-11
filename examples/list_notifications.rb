@@ -6,6 +6,6 @@ require_relative './configuration'
 
 @api = Moip::Api.new
 
-@response = @api.order.show(@order_id)
+@response = @api.notification.list
 
 binding.pry

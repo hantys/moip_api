@@ -21,6 +21,10 @@ module Moip
     def payment
       Moip::V2::PaymentApi.new(factory.default_basic)
     end
+
+    def notification
+      Moip::V2::NotificationApi.new(factory.default_basic)
+    end
   end
 end
 

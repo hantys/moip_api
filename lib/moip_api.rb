@@ -19,6 +19,7 @@ require 'moip_api/account_api'
 require 'moip_api/auth_token_api'
 require 'moip_api/order_api'
 require 'moip_api/payment_api'
+require 'moip_api/notification_api'
 #auth
 require 'moip_api/auth/basic'
 require 'moip_api/auth/oauth'
