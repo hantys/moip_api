@@ -5,7 +5,7 @@ module Moip
 
       attribute :creditCard, type: Object
       attribute :method, type: String
-      # attribute :boleto
+      attribute :boleto, type: Object
       # attribute :onlineBankDebit
     end
   end
