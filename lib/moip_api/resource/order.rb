@@ -5,6 +5,7 @@ module Moip
       include ActiveData::Model
 
       attribute :ownId, type: String
+      attribute :subtotals, type: Hash
       attribute :customer, type: Object # Pode ser o id  de um cliente ja existente ou um novo cliente
       attribute :amount, type: Object
       attribute :receivers, type: Array, default: []
