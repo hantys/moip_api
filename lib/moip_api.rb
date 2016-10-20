@@ -39,6 +39,7 @@ require 'moip_api/resource/billet'
 require 'moip_api/resource/credit_card'
 require 'moip_api/resource/funding_instrument'
 require 'moip_api/resource/holder'
+require 'moip_api/resource/webhook'
 
 module Moip
   class << self

@@ -15,7 +15,7 @@ require_relative './configuration'
 # @ownId = Moip::Utils.generate_own_id
 @ownId = "pedido_exemplo_alecrim-001"
 
-@order = Moip::Resource::Order.new(ownId: @ownId, amount: @amount, items: [@item], customer: @customer)
+@order = Moip::Resource::Order.new(ownId: @ownId, subtotals: { shipping: 1000 }, amount: @amount, items: [@item], customer: @customer)
 
 @holder = Moip::Resource::Holder.new fullname: "Joao Silva", birthdate: "1988-12-30", taxDocument: { type: "CPF", number: "12345679891"}, phone: {}
 
@@ -26,11 +26,12 @@ require_relative './configuration'
 @payment = Moip::Resource::Payment.new installmentCount: 2, fundingInstrument: @funding_instrument
 
 @api = Moip::Api.new
-p @api.order.client.convert_hash_keys_to(:camel_case, @order).to_json
 
-#@order_created = @api.order.create(@order)
-#
-#@response_payment = @api.payment.create(@order_created.id, @payment)
+@order_created = @api.order.create(@order)
+
+p @order_created
+
+@response_payment = @api.payment.create(@order_created.id, @payment)
 #
 #p @response_payment
 

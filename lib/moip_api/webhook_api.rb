@@ -17,6 +17,11 @@ module Moip
         @response
       end
 
+      def create(webhook)
+        @response = client.post("#{base_path}", webhook)
+        @response
+      end
+
     end
 
   end
