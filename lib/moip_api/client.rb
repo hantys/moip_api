@@ -42,6 +42,11 @@ module Moip
 			create_response resp
 		end
 
+    def list(path)
+				resp = self.class.get path, opts()
+        RStruct.new resp.parsed_response
+    end
+
 		def post(path, params, headers = nil)
 
 			if headers == nil

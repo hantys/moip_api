@@ -25,6 +25,10 @@ module Moip
     def notification
       Moip::V2::NotificationApi.new(factory.default_basic)
     end
+
+    def webhook
+      Moip::V2::WebhookApi.new(factory.default_basic)
+    end
   end
 end
 
