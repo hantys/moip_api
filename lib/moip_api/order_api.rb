@@ -22,6 +22,10 @@ module Moip
         @response
       end
 
+      def list
+        @response = client.list("#{base_path}")
+      end
+
     end
 
   end
