@@ -16,6 +16,14 @@ module Moip
         @response = client.get("#{base_path}/#{id}")
         @response
       end
+
+      def list
+        @response = client.list("#{base_path}")
+      end
+
+      def create(notification)
+        @response = client.post("#{base_path}", notification)
+      end
     end
   end
 end

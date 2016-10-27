@@ -40,6 +40,7 @@ require 'moip_api/resource/credit_card'
 require 'moip_api/resource/funding_instrument'
 require 'moip_api/resource/holder'
 require 'moip_api/resource/webhook'
+require 'moip_api/resource/notification'
 
 module Moip
   class << self
