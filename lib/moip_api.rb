@@ -47,7 +47,7 @@ module Moip
 
     extend Forwardable
 
-    def_delegators :configuration, :api_token, :api_secret, :app_id, :app_access_token, :app_secret, :app_redirect_uri, :environment
+    def_delegators :configuration, :api_token, :api_secret, :app_id, :app_access_token, :app_secret, :app_redirect_uri, :environment, :callback_url
 
     def configuration
       @configuration ||= Moip::Config.new
