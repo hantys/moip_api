@@ -68,7 +68,7 @@ module Moip
 			end
 		end
 
-		
+		private
 
 		def get_base_uri
 			if @version == :v2
