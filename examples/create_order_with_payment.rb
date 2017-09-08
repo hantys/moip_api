@@ -29,12 +29,14 @@ require_relative './configuration'
 
 @order_created = @api.order.create(@order)
 
-p @order_created
-
 @response_payment = @api.payment.create(@order_created.id, @payment)
-#
-#p @response_payment
 
-p @order_created
+@order_id = @order_created.id
 
-@refund = @api.refund.full(@order_created.id)
+puts @api.order.show(@order_id)
+
+#reembolso total
+@refund = @api.refund.full(@order_id)
+
+#reembolso parcial
+@refund = @api.refund.full(@order_id, 3000)

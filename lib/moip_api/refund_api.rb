@@ -13,11 +13,11 @@ module Moip
       end
 
       def full(order_id)
-        @response = client.post(base_path(order_id))
+        @response = client.post(base_path(order_id), {})
       end
 
       def partial(order_id, value)
-        @response = client.post(base_path(order_id), amount: value)
+        @response = client.post(base_path(order_id), {amount: value})
       end
     end
   end
