@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moip_api (0.0.2)
+    moip_api (0.0.1)
       active_data
       httparty
       recursive-open-struct

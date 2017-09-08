@@ -22,6 +22,7 @@ require 'moip_api/order_api'
 require 'moip_api/payment_api'
 require 'moip_api/notification_api'
 require 'moip_api/webhook_api'
+require 'moip_api/refund_api'
 #auth
 require 'moip_api/auth/basic'
 require 'moip_api/auth/oauth'
