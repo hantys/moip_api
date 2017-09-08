@@ -20,22 +20,22 @@ module Moip
         @response = client.post(base_path(order_id), {amount: value})
       end
 
-      def billet_full(order_id, bank, agency, agency_check, account, account_check, fullname, cpf)
-        @response = client.post(base_path(order_id), informe(bank, agency, agency_check, account, account_check, fullname, cpf))
+      def billet_full(order_id, bank, type_account, agency, agency_check, account, account_check, fullname, cpf)
+        @response = client.post(base_path(order_id), informe(bank, type_account, agency, agency_check, account, account_check, fullname, cpf))
       end
 
-      def billet_partial(order_id, value, bank, agency, agency_check, account, account_check, fullname, cpf)
-        @response = client.post(base_path(order_id), informe_patial(value, bank, agency, agency_check, account, account_check, fullname, cpf))
+      def billet_partial(order_id, value, bank, type_account, agency, agency_check, account, account_check, fullname, cpf)
+        @response = client.post(base_path(order_id), informe_patial(value, bank, type_account, agency, agency_check, account, account_check, fullname, cpf))
       end
 
       private
-        def informe_patial(value, bank, agency, agency_check, account, account_check, fullname, cpf)
+        def informe_patial(value, bank, type_account, agency, agency_check, account, account_check, fullname, cpf)
           {
             amount: value,
             refundingInstrument: {
               method: "BANK_ACCOUNT",
               bankAccount: {
-                type: "CHECKING",
+                type: type_account, #'CHECKING'(corrente), 'SAVING'(poupança)
                 bankNumber: bank,
                 agencyNumber: agency,
                 agencyCheckNumber: agency_check,
@@ -53,12 +53,12 @@ module Moip
           }
         end
 
-        def informe(bank, agency, agency_check, account, account_check, fullname, cpf)
+        def informe(bank, type_account, agency, agency_check, account, account_check, fullname, cpf)
           {
             refundingInstrument: {
               method: "BANK_ACCOUNT",
               bankAccount: {
-                type: "CHECKING",
+                type: type_account, #'CHECKING'(corrente), 'SAVING'(poupança)
                 bankNumber: bank,
                 agencyNumber: agency,
                 agencyCheckNumber: agency_check,

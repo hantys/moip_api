@@ -35,6 +35,7 @@ puts @api.order.show(@order_id)
 
 puts @api.order.show(@order_id)
 
+type = 'CHECKINwwG' #'CHECKING'(corrente), 'SAVING'(poupança)
 value = 2500
 bank = '001'
 agency = 3412
@@ -43,7 +44,7 @@ account = 2342
 account_check = 9
 
 #reembolso total
-@refund = @api.refund.billet_full(@order_id, bank, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))
+@refund = @api.refund.billet_full(@order_id, bank, type, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))
 
 #reembolso parcial
-@refund = @api.refund.billet_partial(@order_id, value, bank, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))
+@refund = @api.refund.billet_partial(@order_id, value, bank, type, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))
