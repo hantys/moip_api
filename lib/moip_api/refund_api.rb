@@ -31,10 +31,10 @@ module Moip
       private
         def informe_patial(value, bank, agency, agency_check, account, account_check, fullname, cpf)
           {
+            amount: value,
             refundingInstrument: {
               method: "BANK_ACCOUNT",
               bankAccount: {
-                amount: value,
                 type: "CHECKING",
                 bankNumber: bank,
                 agencyNumber: agency,
