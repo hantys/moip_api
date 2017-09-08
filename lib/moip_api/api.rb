@@ -29,6 +29,10 @@ module Moip
     def webhook
       Moip::V2::WebhookApi.new(factory.default_basic)
     end
+
+    def refund
+      Moip::V2::RefundApi.new(factory.default_basic)
+    end
   end
 end
 

@@ -13,7 +13,7 @@ require_relative './configuration'
 @customer = Moip::Resource::Customer.new(ownId: 'fefe', fullname: 'jose atonio', email: 'teste@teste.com', taxDocument: {type: 'CPF', number: '037.852.496-83'}, phone: {countryCode: '55', areaCode: '86', number: '99999-9999'}, shippingAddress: @address)
 
 # @ownId = Moip::Utils.generate_own_id
-@ownId = "pedido_exemplo_alecrim-999"
+@ownId = "pedido_exemplo_alecrim-#{rand(1..1000)}"
 
 @order = Moip::Resource::Order.new(ownId: @ownId,  amount: @amount, items: [@item], customer: @customer, receivers: [@receiver])
 
@@ -35,5 +35,6 @@ p @order_created
 #
 #p @response_payment
 
+p @order_created
 
-
+@refund = @api.refund.full(@order_created.id)

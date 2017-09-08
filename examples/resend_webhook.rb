@@ -2,14 +2,14 @@ require 'moip_api'
 require 'pry'
 require_relative './configuration'
 
-@payment_id = "PAY-QBQZM4HEPVML"
+@payment_id = "PAY-R0KGH799ORQ3"
 
 @webhook = Moip::Resource::Webhook.new(
-  event: "PAYMENT.AUTHORIZED",
+  event: "PAYMENT.CANCELLED",
   resourceId: @payment_id
 )
 
-@api = Moip::Api.new
+  @api = Moip::Api.new
 
 @response = @api.webhook.create(@webhook)
 

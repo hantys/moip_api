@@ -4,7 +4,7 @@ require_relative './configuration'
 
 @api = Moip::Api.new
 
-@notification = Moip::Resource::Notification.new(events: ["PAYMENT.AUTHORIZED"], target: "example.com/authorized", media: "WEBHOOK")
+@notification = Moip::Resource::Notification.new(events: ["PAYMENT.CANCELLED"], target: "https://ruaalecrim.com.br/moip/cancelled", media: "WEBHOOK")
 
 @api.notification.create(@notification)
 

@@ -19,7 +19,7 @@ require 'pry'
   birthDate: "1980-01-10",
   taxDocument: {
     type: "CPF",
-    number: "123.456.798-91"
+    number: "231.528.257-81"
   },
   identityDocument: {
     type: "RG",
