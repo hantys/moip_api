@@ -35,7 +35,7 @@ puts @api.order.show(@order_id)
 
 puts @api.order.show(@order_id)
 
-type = 'CHECKINwwG' #'CHECKING'(corrente), 'SAVING'(poupança)
+type = 'CHECKING' #'CHECKING'(corrente), 'SAVING'(poupança)
 value = 2500
 bank = '001'
 agency = 3412
