@@ -39,4 +39,4 @@ puts @api.order.show(@order_id)
 @refund = @api.refund.full(@order_id)
 
 #reembolso parcial
-@refund = @api.refund.full(@order_id, 3000)
+@refund = @api.refund.partial(@order_id, 3000)
