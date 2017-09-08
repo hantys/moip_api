@@ -27,11 +27,23 @@ require_relative './configuration'
 
 @order_created = @api.order.create(@order)
 
+@order_id = @order_created.id
+
+puts @api.order.show(@order_id)
+
 @response_payment = @api.payment.create(@order_created.id, @payment)
 
-p @response_payment
+puts @api.order.show(@order_id)
 
-binding.pry
+value = 2500
+bank = '001'
+agency = 3412
+agency_check = 3
+account = 2342
+account_check = 9
 
+#reembolso total
+@refund = @api.refund.billet_full(@order_id, bank, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))
 
-
+#reembolso parcial
+@refund = @api.refund.billet_partial(@order_id, value, bank, agency, agency_check, account, account_check, @customer.fullname, @customer.taxDocument[:number].gsub('.', '').gsub('-', ''))

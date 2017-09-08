@@ -25,7 +25,7 @@ module Moip
       end
 
       def billet_partial(order_id, value, bank, agency, agency_check, account, account_check, fullname, cpf)
-        @response = client.post(base_path(order_id), informe_patial(bank, agency, agency_check, account, account_check, fullname, cpf))
+        @response = client.post(base_path(order_id), informe_patial(value, bank, agency, agency_check, account, account_check, fullname, cpf))
       end
 
       private
