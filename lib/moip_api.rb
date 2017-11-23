@@ -39,6 +39,9 @@ require 'moip_api/resource/payment'
 require 'moip_api/resource/billet'
 require 'moip_api/resource/credit_card'
 require 'moip_api/resource/funding_instrument'
+
+require 'moip_api/resource/debito'
+
 require 'moip_api/resource/holder'
 require 'moip_api/resource/webhook'
 require 'moip_api/resource/notification'
