@@ -37,13 +37,12 @@ require 'pry'
 }
 
 @order_id = "ORD-TI1IU5CBW4PF"
-@custodia_id = "ECW-Q2TOAH9UVPUA"
+@custodia_id = "ECW-PDAKEDKPWAOK"
 
-# TODO: tratar quando pagamento ja foi realizado
-# "errors"=>[{"code"=>"PAY-999"}]
+
 @response = HTTParty.post "#{@host}/v2/orders/#{@order_id}/payments", headers: @headers, body: @body.to_json
 
 
-@response = HTTParty.post "#{@host}/v2/escrows/#{@custodia_id}", headers: @headers
+@response = HTTParty.post "#{@host}/v2/escrows/#{@custodia_id}/release", headers: @headers
 
 p @response

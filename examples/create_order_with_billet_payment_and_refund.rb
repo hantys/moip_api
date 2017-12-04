@@ -21,6 +21,8 @@ require_relative './configuration'
 
 @funding_instrument = Moip::Resource::FundingInstrument.new method: "BOLETO", boleto: @billet
 
+@escrow = Moip::Resource::Escrow.new description: "custoria ruaalecrim"
+
 @payment = Moip::Resource::Payment.new installmentCount: 1, fundingInstrument: @funding_instrument
 
 @api = Moip::Api.new

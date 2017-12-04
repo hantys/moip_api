@@ -5,6 +5,7 @@ module Moip
       include ActiveData::Model
 
       attribute :installmentCount, type: String
+      attribute :escrow, type: Object
       attribute :delayCapture, type: String
       attribute :fundingInstrument, type: Object
     end

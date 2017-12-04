@@ -78,8 +78,7 @@ require 'pry'
 
 @response = HTTParty.post "#{@host}/v2/orders", headers: @headers, body: @body.to_json
 
-@response = HTTParty.post "#{@host}/v2/escrows/escrow_id/release", headers: @headers, body: @body.to_json
-ECW-HTEDKG9YVQAF
+
 
 
 p @response

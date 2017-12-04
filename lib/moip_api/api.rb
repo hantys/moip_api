@@ -15,11 +15,15 @@ module Moip
     end
 
     def order
-      Moip::V2::OrderApi.new(factory.default_basic)
+      Moip::V2::OrderApi.new(factory.default_oauth)
     end
 
     def payment
-      Moip::V2::PaymentApi.new(factory.default_basic)
+      Moip::V2::PaymentApi.new(factory.default_oauth)
+    end
+
+    def escrow
+      Moip::V2::EscrowApi.new(factory.default_oauth)
     end
 
     def notification
