@@ -17,11 +17,69 @@ require 'pry'
   ],
   customer: {
     ownId: "cliente_xyz",
-    fullname: "João Silva",
+    fullname: "rejeqwwwwwwwqct",
     email: "joaosilva@email.com"
   }
 }
 
+@body ={
+  "ownId": "wqdw",
+  "amount": {
+    "currency": "BRL",
+    "subtotals": {
+      "shipping": 1000
+    }
+  },
+  "items": [
+    {
+      "product": "Descrição do pedido",
+      "quantity": 1,
+      "detail": "Mais info...",
+      "price": 12000
+    }
+  ],
+  "customer": {
+    "ownId": "asdsad",
+    "fullname": "qwdqwd",
+    "email": "nome@email.com",
+    "birthDate": "1988-12-30",
+    "taxDocument": {
+      "type": "CPF",
+      "number": "22222222222"
+    },
+    "phone": {
+      "countryCode": "55",
+      "areaCode": "11",
+      "number": "66778899"
+    },
+    "shippingAddress": {
+      "street": "Avenida Faria Lima",
+      "streetNumber": 2927,
+      "complement": 8,
+      "district": "Itaim",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BRA",
+      "zipCode": "01234000"
+    }
+  },
+  "receivers": [
+    {
+      "type": "SECONDARY",
+      "moipAccount": {
+        "id": "MPA-D4020D8BCCAA"
+      },
+      "amount": {
+        "percentual": 30
+      }
+    }
+  ]
+}
+
 @response = HTTParty.post "#{@host}/v2/orders", headers: @headers, body: @body.to_json
+
+@response = HTTParty.post "#{@host}/v2/escrows/escrow_id/release", headers: @headers, body: @body.to_json
+ECW-HTEDKG9YVQAF
+
 
 p @response

@@ -4,9 +4,14 @@ require 'pry'
 @host = "https://sandbox.moip.com.br"
 
 @headers = {'Content-Type' => 'application/json', 'Authorization' => 'Basic WUpORzJKSjdFRjlEMDRET01UR0U4VDZaQzJUQ1pBQ0Q6TDRCSDY3T0VPUFg4TDhLS0g5SFRUU1dNQ0ZaSDVIMkJZUzE4Rk9VSw=='}
+@headers = {'Content-Type' => 'application/json', 'Authorization' => 'OAuth 96236c8ce7944d80a98cf64ea7f3f2e5_v2'}
+
 
 @body = {
   installmentCount: 1,
+  escrow:{
+    description: "Custódia de pagamento"
+  },
   fundingInstrument: {
     method: "CREDIT_CARD",
     creditCard: {
@@ -31,11 +36,14 @@ require 'pry'
   }
 }
 
-@order_id = "ORD-ESHMCPGS2L1S"
+@order_id = "ORD-TI1IU5CBW4PF"
+@custodia_id = "ECW-Q2TOAH9UVPUA"
 
 # TODO: tratar quando pagamento ja foi realizado
 # "errors"=>[{"code"=>"PAY-999"}]
 @response = HTTParty.post "#{@host}/v2/orders/#{@order_id}/payments", headers: @headers, body: @body.to_json
 
+
+@response = HTTParty.post "#{@host}/v2/escrows/#{@custodia_id}", headers: @headers
 
 p @response

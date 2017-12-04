@@ -11,4 +11,3 @@ require_relative './configuration'
 @list = @api.notification.list
 
 binding.pry
-

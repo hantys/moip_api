@@ -41,8 +41,18 @@ require 'moip_api'
   type: "MERCHANT"
 }
 
-@body = Moip::Utils.convert_hash_keys_to(:camel_case, @account).to_json
+@app_info = {
+  name: "RuaAlecrim",
+  description: "marketplace",
+  site: "www.ruaalecrim.com.br",
+  redirectUri: "https://connect.ruaalecrim.com.br/auth/moip"}
 
-@response = HTTParty.post "#{@host}/v2/accounts", headers: @headers, body: @body
+
+#@body = Moip::Utils.convert_hash_keys_to(:camel_case, @account).to_json
+
+@body = Moip::Utils.convert_hash_keys_to(:camel_case, @app_info).to_json
+
+# @response = HTTParty.post "#{@host}/v2/accounts", headers: @headers, body: @body
+@response = HTTParty.post @host, headers: @headers, body: @body
 
 p @response

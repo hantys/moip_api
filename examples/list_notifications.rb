@@ -10,3 +10,4 @@ require_relative './configuration'
 @response = @api.notification.list
 
 binding.pry
+

@@ -17,7 +17,7 @@ require_relative './configuration'
 
 @order = Moip::Resource::Order.new(ownId: @ownId, amount: @amount, items: [@item], customer: @customer)
 
-@billet = Moip::Resource::Billet.new expirationDate: "2017-11-11"
+@billet = Moip::Resource::Billet.new expirationDate: "2018-11-11"
 
 @funding_instrument = Moip::Resource::FundingInstrument.new method: "BOLETO", boleto: @billet
 

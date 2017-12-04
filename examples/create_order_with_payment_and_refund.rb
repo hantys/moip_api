@@ -10,7 +10,7 @@ require_relative './configuration'
 
 @address = Moip::Resource::Address.new(city: "São Paulo", complement: "8", street: "Avenida Faria Lima", streetNumber: "2927", zipCode: "0123400000", state: "SP", type: "SHIPPING", country: "BRA")
 
-@customer = Moip::Resource::Customer.new(ownId: 'fefe', fullname: 'jose atonio', email: 'teste@teste.com', taxDocument: {type: 'CPF', number: '037.852.496-83'}, phone: {countryCode: '55', areaCode: '86', number: '99999-9999'}, shippingAddress: @address)
+@customer = Moip::Resource::Customer.new(ownId: 'fefe', fullname: 'reject', email: 'teste@teste.com', taxDocument: {type: 'CPF', number: '037.852.496-83'}, phone: {countryCode: '55', areaCode: '86', number: '99999-9999'}, shippingAddress: @address)
 
 # @ownId = Moip::Utils.generate_own_id
 @ownId = "pedido_exemplo_alecrim-#{rand(1..1000)}"
