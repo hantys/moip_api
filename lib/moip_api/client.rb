@@ -72,7 +72,7 @@ module Moip
 		def get_base_uri
 			if @version == :v2
 				if production?
-					(host== :connect) ? "https://connect.moip.com.br" : "https://api.moip.com.br"
+					(host== :connect) ? "https://connect.moip.com.br" : "https://api.moip.com.br/v2"
 				else
 					(host== :connect) ? "https://connect-sandbox.moip.com.br" : "https://sandbox.moip.com.br/v2"
 				end
