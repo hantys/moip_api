@@ -10,7 +10,6 @@ module Moip
 
       def create(order_id, payment)
         @response= client.post("/orders/#{order_id}/payments", payment)
-        @response
         # return Response.new @response, @response
       end
 

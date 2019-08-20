@@ -8,8 +8,7 @@ module Moip
 			@env, @auth, @version, @opts, @host = env.to_sym, auth, version, opts, host
 
 			@uri = get_base_uri
-			self.class.base_uri @uri
-		end
+			self.class.base_uri @uri end
 
 		def development?
 			env == :development

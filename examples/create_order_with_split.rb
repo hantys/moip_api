@@ -1,5 +1,5 @@
 require 'moip_api'
-require 'pry'
+# require 'pry'
 require_relative './configuration'
 
 @amount = Moip::Resource::Amount.new(currency: "BRL", subtotals: {shipping: 50})
