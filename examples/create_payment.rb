@@ -12,7 +12,7 @@ require_relative './configuration'
 
 @api = Moip::Api.new
 
-@order_id = "ORD-O73CMM2N9TLD"
+@order_id = "ORD-X1B8GN7RK19F"
 
 @response = @api.payment.create(@order_id, @payment)
 

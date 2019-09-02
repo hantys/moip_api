@@ -39,8 +39,6 @@ escrow_id = order.escrows.last.id
 
 
 @release = @api.escrow.release(escrow_id)
-ECW-COLD7BXKU03P
-ORD-9R2S8F24GY47
 
 #reembolso total
 @refund = @api.refund.full(@order_id)
